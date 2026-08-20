@@ -1,4 +1,4 @@
-import { ExternalLink, Code } from 'lucide-react';
+import { ArrowRight, Image as ImageIcon } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import './ProjectCard.css';
 
@@ -27,34 +27,28 @@ export default function ProjectCard({ project }) {
   return (
     <div 
       ref={cardRef}
-      className={`project-card glass-panel ${isVisible ? 'is-visible' : 'is-hidden'}`}
+      className={`project-card ${isVisible ? 'is-visible' : 'is-hidden'}`}
     >
-      <div className="project-image-container">
+      <div className="card-thumbnail-container">
         {project.image_url ? (
-          <img src={project.image_url} alt={project.title} className="project-image" />
+          <img src={project.image_url} alt={project.title} className="card-thumbnail" />
         ) : (
-          <div className="project-image-placeholder">
-            <span>No Image</span>
+          <div className="card-thumbnail-placeholder">
+            <ImageIcon size={32} />
           </div>
         )}
-        <div className="project-overlay">
-          <div className="project-links">
-            {project.link && (
-              <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link-btn" title="View Project">
-                <ExternalLink size={20} />
-              </a>
-            )}
-            {project.github_url && (
-              <a href={project.github_url} target="_blank" rel="noopener noreferrer" className="project-link-btn" title="View Code">
-                <Code size={20} />
-              </a>
-            )}
-          </div>
-        </div>
       </div>
-      <div className="project-content">
-        <h3 className="project-title">{project.title}</h3>
-        <p className="project-description">{project.description}</p>
+      
+      <div className="card-body">
+        <h3 className="card-title">{project.title}</h3>
+        <p className="card-desc">{project.description}</p>
+        
+        <div className="card-footer">
+          <span className="card-tag">Web App</span>
+          <a href={project.link || '#'} className="btn-details">
+            Details <ArrowRight size={14} />
+          </a>
+        </div>
       </div>
     </div>
   );

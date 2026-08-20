@@ -1,12 +1,13 @@
 :root {
-  --color-bg: #050505; /* Deep dark */
-  --color-surface: rgba(20, 20, 25, 0.7); /* Glassmorphism */
+  --color-bg: #0a0a0a;
+  --color-surface: #111111;
+  --color-border: #222222;
   --color-text: #ffffff;
-  --color-text-muted: #a0a0a5;
-  --color-neon-blue: #00f3ff;
-  --color-neon-blue-glow: rgba(0, 243, 255, 0.5);
+  --color-text-muted: #888888;
+  --color-accent: #ffffff;
   
-  --font-main: 'Noto Sans KR', 'Inter', sans-serif;
+  --font-main: 'Inter', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
   
   --transition-fast: 0.2s ease;
   --transition-slow: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -25,9 +26,13 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
+  
+  /* Grid Background */
   background-image: 
-    radial-gradient(circle at 15% 50%, rgba(0, 243, 255, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 85% 30%, rgba(0, 243, 255, 0.04) 0%, transparent 50%);
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center center;
 }
 
 a {
@@ -39,59 +44,60 @@ ul {
   list-style: none;
 }
 
-/* Glassmorphism utilities */
+/* Base utilities */
 .glass-panel {
   background: var(--color-surface);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
 }
 
-/* Neon utilities */
 .text-neon {
-  color: var(--color-neon-blue);
-  text-shadow: 0 0 10px var(--color-neon-blue-glow);
+  /* Removing neon, keeping class name but making it white for now to avoid breaking other pages */
+  color: var(--color-text);
 }
 
 .btn-neon {
   background: transparent;
-  color: var(--color-neon-blue);
-  border: 1px solid var(--color-neon-blue);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
   padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
+  border-radius: 4px;
+  font-weight: 500;
   cursor: pointer;
   transition: var(--transition-fast);
-  box-shadow: 0 0 5px transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
 }
 
 .btn-neon:hover {
-  background: var(--color-neon-blue);
+  background: var(--color-text);
   color: var(--color-bg);
-  box-shadow: 0 0 15px var(--color-neon-blue-glow);
 }
 
 .btn-primary {
   background: var(--color-text);
   color: var(--color-bg);
-  border: none;
+  border: 1px solid var(--color-text);
   padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 4px;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition-fast);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
 }
 
 .btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
+  background: transparent;
+  color: var(--color-text);
 }
 
 /* Layout utilities */
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -120,10 +126,10 @@ ul {
 
 .form-input {
   width: 100%;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   padding: 0.75rem 1rem;
-  border-radius: 8px;
+  border-radius: 4px;
   color: var(--color-text);
   font-family: var(--font-main);
   transition: var(--transition-fast);
@@ -131,8 +137,7 @@ ul {
 
 .form-input:focus {
   outline: none;
-  border-color: var(--color-neon-blue);
-  box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+  border-color: var(--color-text);
 }
 
 .form-textarea {

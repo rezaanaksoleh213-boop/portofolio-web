@@ -1,13 +1,10 @@
 .navbar {
-  position: fixed;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 1200px;
+  position: absolute; /* Not fixed anymore based on brutalist style, or keep fixed but transparent */
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 100;
-  padding: 1rem 0;
-  border-radius: 20px;
+  padding: 2rem 0;
 }
 
 .navbar-content {
@@ -19,31 +16,35 @@
 .navbar-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
 }
 
 .brand-text {
-  font-weight: 900;
-  letter-spacing: 4px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 2px;
   font-size: 1.2rem;
-  color: var(--color-text);
+  color: var(--color-text-muted);
 }
 
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .nav-link {
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--color-text-muted);
   transition: var(--transition-fast);
+  text-transform: capitalize;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
 }
 
-.nav-link:hover {
-  color: var(--color-neon-blue);
-  text-shadow: 0 0 8px var(--color-neon-blue-glow);
+.nav-link:hover, .nav-link.active {
+  color: var(--color-text);
+  border-bottom: 2px solid var(--color-text);
 }
 
 .btn-icon {
@@ -58,10 +59,5 @@
 }
 
 .btn-icon:hover {
-  color: var(--color-neon-blue);
-}
-
-.flex-center {
-  display: flex;
-  align-items: center;
+  color: var(--color-text);
 }
